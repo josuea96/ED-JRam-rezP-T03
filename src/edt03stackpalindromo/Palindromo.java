@@ -15,7 +15,8 @@ import java.util.Scanner;
  */
 public class Palindromo {
     
-    Stacks node1 = new Stacks();
+    Stacks node1 = new Stacks();//Se crean dos nodos fuera de los metodos para que puedan ser utilizados
+    //por los mismos y de esta manera tener dos pilas distintas para poder comparar los caracteres
     Stacks node2 = new Stacks();
     
     /**
@@ -46,24 +47,28 @@ public class Palindromo {
         //junta
         pa = pa.replace(",", "");
         pa = pa.replace(".", "");
-        char [] caracteres = pa.toCharArray();
-        char [] caracter2 = new char [caracteres.length];
+        char [] caracteres = pa.toCharArray();//Se cambia la palabra o frase a caracteres
+        char [] caracter2 = new char [caracteres.length];//Se crea otra variable de tipo char que contenga
+        //la misma longitud de caracteres 
         
-        for(int i = caracteres.length - 1, j = 0; j < caracteres.length; i--, j++){
-            caracter2[j] = caracteres[i];
-            System.out.print("[" + caracteres[i] + "]");
+        for(int i = caracteres.length - 1, j = 0; j < caracteres.length; i--, j++){//Se entra a un ciclo for
+            //en donde se va a estar comparando
+            caracter2[j] = caracteres[i];//En la otra variable de tipo char que se creó se van guardando
+            //los mismos caracteres mientras se va recorriendo
+            System.out.print("[" + caracteres[i] + "]");//Se imprimen los caracteres
+            System.out.println("");
         }
 
-        do {
-            node1.push(caracteres[i2]);
-            ++i2;
-        }while(caracteres.length != i2);
+        do {//Realiza una condición
+            node1.push(caracteres[i2]);//Se utiliza un nodo para guardar los caracteres en una pila
+            ++i2;//y se va recorriendo en uno
+        }while(caracteres.length != i2);//hasta que el tamaño de caracteres sea diferente del ultimo caracter
         
         i2 = 0;
         
         do {
-            node2.push(caracter2[i2]);
-            ++i2;
+            node2.push(caracter2[i2]);//Se utiliza el siguiente nodo para guardar los caracteres en otra pila
+            ++i2;//y se va recorriendo en uno como en el caso anterior
         }while(caracteres.length != i2);
         
         return caracteres;
@@ -78,14 +83,15 @@ public class Palindromo {
         for(int i = 0; i < caracteres.length; i++){//Se crea un ciclo for para ir
             //recorriendo caracter por caracter
             if(node1.getTop().getData() == node2.getTop().getData()){//Se crea un ciclo if dentro del for
-                //en donde se estara tomando los tados de la 
-                node1.pop();
+                //en donde se estara tomando los datos de la los tops tanto del nodo1 como el del nodo2
+                node1.pop();//Mientras se hace la comparación, se van sacando los caracteres
                 node2.pop();
             }
-            else{
-                return false;
+            else{//Si el ciclo if no se cumple, se da por hecho que no es palindromo dado que unas letras
+                //son diferentes
+                return false;//y por ende se regresa un false
             }
-        }
+        }//De no ser este el caso, se regresa un true
         return true;
     }
 }

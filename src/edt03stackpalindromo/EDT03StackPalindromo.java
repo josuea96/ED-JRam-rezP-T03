@@ -22,7 +22,10 @@ public class EDT03StackPalindromo{//Clase Main
         //ya que se estara trabajando con una palabra y verificar si es o no un palindromo
         palabra = sp.crearString();//El string que acabamos de crear lo igualamos a
         //un metodo que tenemos en la clase palindromo que sirve para crear una palabra o frase
-        if(sp.verificarPalindromo(sp.palindromo(palabra))){//
+        if(sp.verificarPalindromo(sp.palindromo(palabra))){//Se llama al metodo verificarPalindromo
+            //para ver si es un true o false lo que salga, sin embargo ponemos en el parametro el proceso
+            //que utilizamos para hacer el palindromo, y dentro del mismo metemos el como parametro los caracteres
+            //osease la palabra
             System.out.println("La palabra o frase es palindromo");
         }
         else{
